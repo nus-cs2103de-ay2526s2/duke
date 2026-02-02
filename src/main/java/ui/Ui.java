@@ -1,5 +1,7 @@
+package ui;
 import java.util.Scanner;
-
+import model.TaskList;
+import model.Task;
 /**
  * Interacts with user by printing
  */
@@ -67,6 +69,3 @@ public class Ui {
         System.out.println(task.toString());
     }
 }
-
-
-

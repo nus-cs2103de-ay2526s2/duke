@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 
 /**
@@ -5,7 +7,7 @@ import java.util.ArrayList;
  */
 public class TaskList {
 
-    public static ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
+    public static final ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
 
     // Adds task
     public static void addTask(Task task){

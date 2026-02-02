@@ -1,3 +1,6 @@
+import ui.Ui;
+import logic.LogicController;
+import parser.Message;
 public class Star {
     public static void main(String[] args) {
         Ui.printWelcomeMessage();   // Prints welcome message in UI

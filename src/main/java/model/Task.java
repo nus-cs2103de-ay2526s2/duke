@@ -1,12 +1,13 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+package model;
+
+import ui.Ui;
 
 /**
  * Task has 2 states: done and not done
  * Events are tasks with start and end date/time
  */
 public class Task {
-    public String name;
+    public final String name;
     public boolean isDone = false;
 
     // Constructor
@@ -42,4 +43,3 @@ public class Task {
         }
     }
 }
-

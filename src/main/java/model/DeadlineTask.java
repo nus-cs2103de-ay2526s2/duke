@@ -1,5 +1,6 @@
+package model;
 public class DeadlineTask extends Task {
-    public String by;
+    public final String by;
 
     public DeadlineTask(String name, String by) {
         super(name);

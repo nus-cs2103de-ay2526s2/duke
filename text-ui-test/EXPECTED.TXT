@@ -18,13 +18,13 @@ What can I do for you?
        [D][ ] assignment (by: fri)
 
 [Star] I have added a new task: meeting
-       [E][ ] meeting (by: 6pm)
+       [E][ ] meeting (st 4pm | by: 6pm)
 
 [Star] Tasklist:
        1.[T][ ] run
        2.[T][X] study
        3.[D][ ] assignment (by: fri)
-       4.[E][ ] meeting (by: 6pm)
+       4.[E][ ] meeting (st 4pm | by: 6pm)
        Invalid index!
 
 [Star] ERROR! Empty task description!
@@ -33,7 +33,7 @@ What can I do for you?
        1.[T][ ] run
        2.[T][X] study
        3.[D][ ] assignment (by: fri)
-       4.[E][ ] meeting (by: 6pm)
+       4.[E][ ] meeting (st 4pm | by: 6pm)
 
 [Star] ERROR! /by not found
 
@@ -41,7 +41,7 @@ What can I do for you?
        1.[T][ ] run
        2.[T][X] study
        3.[D][ ] assignment (by: fri)
-       4.[E][ ] meeting (by: 6pm)
+       4.[E][ ] meeting (st 4pm | by: 6pm)
 
 [Star] I have removed this task: run
        [T][ ] run
@@ -51,6 +51,6 @@ What can I do for you?
 
 [Star] Tasklist:
        1.[T][X] study
-       2.[E][ ] meeting (by: 6pm)
+       2.[E][ ] meeting (st 4pm | by: 6pm)
 
 [Star] Bye. Hope to see you again soon!

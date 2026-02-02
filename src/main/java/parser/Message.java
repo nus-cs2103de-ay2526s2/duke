@@ -1,14 +1,17 @@
+package parser;
+
 import java.util.Arrays;
+import exception.CustomException;
 
 /**
  * Parses user commands into actionable parts.
  */
 public class Message {
-    String message;
-    String[] tokens;
-    int tokenLength;
+    final String message;
+    public final String[] tokens;
+    public final int tokenLength;
     // Constructor
-    Message(String message) {
+    public Message(String message) {
         this.message = message;
         this.tokens = this.parseMessage();
         this.tokenLength = tokens.length;
@@ -33,7 +36,7 @@ public class Message {
     // get TaskName
     // if empty -> throws exception
     public String parseTaskName() {
-        int lastTaskNameIndex = 0;
+        int lastTaskNameIndex = tokenLength;
 
         // taskName stops upon seeing /by or /st
         for (int i = 1; i < tokenLength; i++) {
@@ -41,11 +44,8 @@ public class Message {
                 lastTaskNameIndex = i;
                 break;
             }
-            else {
-                lastTaskNameIndex = tokenLength;
-            }
         }
-        if (lastTaskNameIndex == 0){
+        if (lastTaskNameIndex <= 1){
             throw new CustomException("Empty task description!");
         }
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
