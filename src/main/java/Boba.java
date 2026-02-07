@@ -15,7 +15,8 @@ public class Boba {
 
         // Task storage
         Task[] tasks = new Task[100];
-        int taskCount = 0;
+        Storage storage = new Storage("./data/boba.txt");
+        int taskCount = storage.load(tasks);
 
         // Greeting
         System.out.println(line);
@@ -50,6 +51,7 @@ public class Boba {
                         System.out.println("    You have " + taskCount + " task(s) btw~");
                     } else {
                         tasks[index].markAsDone();
+                        storage.save(tasks, taskCount);
                         System.out.println("    Yay you did it!! ☆ﾟ.*･｡ﾟ");
                         System.out.println("    " + tasks[index]);
                     }
@@ -60,6 +62,7 @@ public class Boba {
                         System.out.println("    You have " + taskCount + " task(s) btw~");
                     } else {
                         tasks[index].markAsNotDone();
+                        storage.save(tasks, taskCount);
                         System.out.println("    No worries, we all need more time sometimes~");
                         System.out.println("    " + tasks[index]);
                     }
@@ -74,6 +77,7 @@ public class Boba {
                     } else {
                         tasks[taskCount] = new Todo(description);
                         taskCount++;
+                        storage.save(tasks, taskCount);
                         System.out.println("    Got it! I've added this task ✿");
                         System.out.println("      " + tasks[taskCount - 1]);
                         System.out.println("    Now you have " + taskCount + " task(s) in the list~");
@@ -96,6 +100,7 @@ public class Boba {
                         } else {
                             tasks[taskCount] = new Deadline(description, by);
                             taskCount++;
+                            storage.save(tasks, taskCount);
                             System.out.println("    Got it! I've added this task ✿");
                             System.out.println("      " + tasks[taskCount - 1]);
                             System.out.println("    Now you have " + taskCount + " task(s) in the list~");
@@ -121,6 +126,7 @@ public class Boba {
                         } else {
                             tasks[taskCount] = new Event(description, from, to);
                             taskCount++;
+                            storage.save(tasks, taskCount);
                             System.out.println("    Got it! I've added this task ✿");
                             System.out.println("      " + tasks[taskCount - 1]);
                             System.out.println("    Now you have " + taskCount + " task(s) in the list~");
@@ -138,6 +144,7 @@ public class Boba {
                         }
                         tasks[taskCount - 1] = null;
                         taskCount--;
+                        storage.save(tasks, taskCount);
                         System.out.println("    Alright, I've removed this task~");
                         System.out.println("      " + removed);
                         System.out.println("    Now you have " + taskCount + " task(s) in the list.");
