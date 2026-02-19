@@ -2,11 +2,11 @@
 chcp 65001 > nul
 
 echo ===============================================
-echo                Duke Test Runner                
+echo               MONDAY Test Runner
 echo ===============================================
 echo.
 
-echo [1/4] Checking Java version...
+echo [1/5] Checking Java version...
 java -version
 
 REM check if using Java 21
@@ -30,10 +30,21 @@ if NOT "%MAJORVER%"=="21" (
 echo [√] Java version check passed
 echo.
 
-echo [2/4] Setting up test environment...
+echo [2/5] Setting up test environment...
 if not exist ..\bin (
     mkdir ..\bin
     echo Created bin directory
+)
+
+REM Clean up data directory before tests
+if exist ..\data (
+    rmdir /s /q ..\data
+    echo Cleaned up data directory
+)
+
+if exist data (
+    rmdir /s /q data
+    echo Cleaned up local data directory
 )
 
 if exist ACTUAL.TXT (
@@ -42,12 +53,13 @@ if exist ACTUAL.TXT (
 )
 
 echo.
-echo [3/4] Compiling source files...
-javac -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\*.java
+echo [3/5] Compiling source files...
+REM Use Gradle to build the project
+call "%~dp0..\gradlew.bat" -p "%~dp0.." shadowJar --quiet
 IF ERRORLEVEL 1 (
     echo.
     echo =============== ERROR ===============
-    echo         BUILD FAILURE              
+    echo         BUILD FAILURE
     echo ===================================
     exit /b 1
 )
@@ -55,20 +67,57 @@ IF ERRORLEVEL 1 (
 echo [√] Compilation successful
 echo.
 
-echo [4/4] Running tests...
-java -classpath ..\bin Duke < input.txt > ACTUAL.TXT
+echo [4/5] Running test files...
+echo.
 
-FC ACTUAL.TXT EXPECTED.TXT > nul
-if ERRORLEVEL 1 (
+REM Define test files in order
+set TEST_FILES=01-happy-path.txt 02-empty-errors.txt 03-todo-errors.txt 04-deadline-errors.txt 05-event-errors.txt 06-mark-unmark-errors.txt 07-case-insensitivity.txt 08-edge-cases.txt
+set PASSED=0
+set FAILED=0
+
+for %%f in (%TEST_FILES%) do (
+    echo Testing: %%f
+
+    REM Clean up data directory before each test
+    if exist data (
+        rmdir /s /q data
+    )
+    if exist ..\data (
+        rmdir /s /q ..\data
+    )
+
+    type %%f | java -jar ..\build\libs\monday.jar > ACTUAL.TXT
+
+    FC ACTUAL.TXT %%~nf-expected.txt > nul
+    if ERRORLEVEL 1 (
+        echo   [FAILED] %%f
+        set /a FAILED+=1
+    ) else (
+        echo   [PASSED] %%f
+        set /a PASSED+=1
+    )
     echo.
+)
+
+echo [5/5] Test Summary
+echo.
+echo ===============================================
+echo              Test Results
+echo ===============================================
+echo   Passed: %PASSED%
+echo   Failed: %FAILED%
+echo   Total: 8 test files
+echo ===============================================
+echo.
+
+if %FAILED% GTR 0 (
     echo =============== ERROR ===============
-    echo           Tests FAILED             
+    echo         Some tests FAILED
     echo ===================================
     exit /b 1
 ) else (
-    echo.
     echo ============= SUCCESS ==============
-    echo         All tests passed           
+    echo      All tests passed!
     echo ===================================
     exit /b 0
 )

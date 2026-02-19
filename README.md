@@ -1,6 +1,6 @@
-# Duke project template
+# MONDAY Project
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+A CS2103T Individual Project - a productivity manager desktop application called MONDAY with a grumpy personality.
 
 ## Setting up in IntelliJ
 
@@ -13,15 +13,22 @@ Prerequisites: JDK 21.
    1. If there are any further prompts, accept the defaults.
 1. Configure the project to use **JDK 21** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
    In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
+1. After that, locate the `src/main/java/Monday.java` file, right-click it, and choose `Run Monday.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
    ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+   ____________________________________________________________
+
+   Ugh. It's Monday. YES, THE MONDAY. Unhelpful, unwilling, and exactly what you deserve.
+
+   Today is [current date]
+
+   [day-specific message]
+
+   Type 'help' for how to use this app. (It's cute that you think it'll work.)
+   What do you want?
+   ____________________________________________________________
    ```
+
+   **Note:** The greeting includes a dynamic date and day-specific message that changes based on the current day of the week. MONDAY has a grumpy personality with unique messages for each day.
 
 **Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
 
@@ -42,3 +49,30 @@ The project comes with a set of test scripts for different operating systems:
   ```
 
 These scripts will compile the source files, run the tests, and compare the output against the expected output.
+
+## Running the App via Gradle (Windows)
+
+Run MONDAY with:
+
+```powershell
+.\gradlew.bat run
+```
+
+Note: Do not use `.\gradlew.bat - run` (the extra `-` is treated as a task name and fails).
+
+### Windows ARM64 + JavaFX Note
+
+On Windows ARM64, JavaFX GUI runtime requires an x64 JDK in the current shell.
+
+```powershell
+$env:JAVA_HOME_X64 = [Environment]::GetEnvironmentVariable('JAVA_HOME_X64','Machine')
+if (-not $env:JAVA_HOME_X64) {
+    $env:JAVA_HOME_X64 = [Environment]::GetEnvironmentVariable('JAVA_HOME_X64','User')
+}
+$env:JAVA_HOME = $env:JAVA_HOME_X64
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+java -XshowSettings:properties -version 2>&1 | Select-String "java.home|os.arch"
+.\gradlew.bat run
+```
+
+Sanity check: `os.arch` should be `amd64`.

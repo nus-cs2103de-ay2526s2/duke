@@ -1,17 +1,56 @@
-# IDEA files
-/.idea/
-/out/
-/*.iml
-
-# Gradle build files
-/.gradle/
-/build/
-src/main/resources/docs/
-
-# MacOS custom attributes files created by Finder
-.DS_Store
+# IDE
+.idea/
 *.iml
+*.iws
+*.ipr
+.vscode/
+out/
 bin/
 
-/text-ui-test/ACTUAL.TXT
+# Build
+build/
+build/libs/
+*.jar
+.gradle/
+gradle-app.setting
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Project-specific
+src/main/resources/docs/
+
+# Test files
+text-ui-test/ACTUAL*.txt
+text-ui-test/ACTUAL*.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Data files (user's persisted tasks)
+data/
+
+# Kilo Code
+.kilocode/
+
+# AI documentation (not shown to instructors)
+AGENTS.md
+
+# Claude/IDE (legacy - migration to Kilo Code)
+.claude/
+CLAUDE.md
+.lsp.json
+iP_weeklyDocs/
+
+# Saved AI interactions (legacy - migration to Kilo Code)
+.claude/saved-interactions/
+
+# Git worktrees
+.worktrees/
+
+# Design docs (for AI use, not for grading)
+docs/plans/
+docs/commit-message-quick-reference.md
+plans/commit-message-workflow-specification.md
