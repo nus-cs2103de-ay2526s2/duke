@@ -1,0 +1,28 @@
+list
+todo read book
+todo return book
+todo join sports club
+deadline return book /by 15-06-2024
+deadline project report /by 31-12-2024
+event project meeting /from 20-08-2024 1400 /to 20-08-2024 1600
+event team lunch /from 25-12-2024 1200 /to 25-12-2024 1400
+list
+mark 1
+mark 2
+list
+unmark 1
+list
+delete 3
+list
+deadline school meeting /from 29-09-2023 1400 /to 05-09-2024 1300
+due 15-06-2024
+due 25-12-2024
+deadline exam prep /by 01-01-2025
+event birthday party /from 15-02-2025 1000 /to 15-02-2025 1300
+list
+find book
+find meeting
+mark 4
+mark 5
+list
+bye
