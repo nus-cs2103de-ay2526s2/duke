@@ -50,7 +50,7 @@ fi
 
 # compile the code into the bin folder, terminates if error occurred
 echo -e "\n${BOLD}[3/4] Compiling source files...${NC}"
-if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
+if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/chatbox/main/*.java
 then
     echo -e "\n${RED}╔════ ERROR ══════════════════════════════════╗${NC}"
     echo -e "${RED}║            BUILD FAILURE                     ║${NC}"
@@ -61,7 +61,8 @@ echo -e "${GREEN}✓ Compilation successful${NC}\n"
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 echo -e "${BOLD}[4/4] Running tests...${NC}"
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+# Change this line:
+java -classpath ../bin chatbox.main.ZhengjunChatbox < input.txt > ACTUAL.TXT
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT

@@ -1,0 +1,3 @@
+Todo | Not done | read book
+Deadline | Not done | return book | 2/12/2019 1800
+Event | Not done | project meeting | 5/12/2019 1400 | 9/12/2019 1600
