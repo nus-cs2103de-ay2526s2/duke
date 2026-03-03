@@ -2,7 +2,7 @@
 chcp 65001 > nul
 
 echo ===============================================
-echo                Duke Test Runner                
+echo              Duchess Test Runner
 echo ===============================================
 echo.
 
@@ -43,7 +43,7 @@ if exist ACTUAL.TXT (
 
 echo.
 echo [3/4] Compiling source files...
-javac -cp ..\src\main\java -Xlint:none -d ..\bin ..\src\main\java\*.java
+javac -cp ..\src\main\java\ -Xlint:none -d ..\bin ..\src\main\java\duchess\ui\Duchess.java
 IF ERRORLEVEL 1 (
     echo.
     echo =============== ERROR ===============
@@ -56,10 +56,10 @@ echo [√] Compilation successful
 echo.
 
 echo [4/4] Running tests...
-java -classpath ..\bin Duke < input.txt > ACTUAL.TXT
+java -classpath ..\bin duchess.Duchess < input.txt > ACTUAL.TXT
 
 FC ACTUAL.TXT EXPECTED.TXT > nul
-if ERRORLEVEL 1 (
+IF ERRORLEVEL 1 (
     echo.
     echo =============== ERROR ===============
     echo           Tests FAILED             

@@ -1,0 +1,18 @@
+todo
+todo a
+mark 0
+mark 1
+deadline /by
+deadline a /by
+deadline a /by Sunday
+unmark 2
+unmark 3 2 4 4
+event
+event a /from a /to b
+event b /from /to
+blah
+bleh 2
+event a /from the first time /to in forever
+delete 10
+delete 4
+bye 0

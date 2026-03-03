@@ -1,7 +1,32 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Hello! I'm Duchess!
+What can I do for you?
+Task name cannot be empty!
+Got it. I've added this task:
+[T][ ] a
+Now you have 1 task(s) in the list.
+Invalid task index!
+Nice! I've marked this task as done:
+[T][X] a
+Task name cannot be empty!
+Please provide deadline for task!
+Got it. I've added this task:
+[D][ ] a (by: Sunday)
+Now you have 2 task(s) in the list.
+OK, I've marked this task as not done yet:
+[D][ ] a (by: Sunday)
+Index provided is not a single number!
+Event name cannot be empty!
+Got it. I've added this task:
+[E][ ] a (from: a to: b)
+Now you have 3 task(s) in the list.
+Event start date cannot be empty!
+I'm sorry, but I don't know what that means :(
+I'm sorry, but I don't know what that means :(
+Got it. I've added this task:
+[E][ ] a (from: the first time to: in forever)
+Now you have 4 task(s) in the list.
+Invalid task index!
+Noted. I've removed this task:
+[E][ ] a (from: the first time to: in forever)
+Now you have 3 task(s) in the list.
+Bye. Hope to see you again soon!
