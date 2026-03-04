@@ -1,0 +1,38 @@
+.root {
+    main-color: rgb(237, 255, 242);       /* Create a looked-up color called "main-color" within root. */
+    -fx-background-color: main-color;
+}
+
+.button:pressed {
+    -fx-background-color:orange;
+    -fx-font-size: 20px;
+}
+
+
+.scroll-bar {
+    -fx-font-size: 10px;  /* Change width of scroll bar. */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3730A3;
+    -fx-background-radius: 1em;
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+/* Blueish-Purple Button Styling */
+.button, .menu-button {
+    -fx-background-color: #4F46E5; /* Bright Indigo */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover, .menu-button:hover {
+    -fx-background-color: #6366F1; /* Lighter Indigo on hover */
+}

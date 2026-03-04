@@ -1,7 +1,74 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+[Star] Hello! I'm Star
+What can I do for you?
 
+
+[Star] I have added a new task: run
+       [T][ ] run
+
+[Star] I have added a new task: assignment cs2103de
+       [T][ ] assignment cs2103de
+
+[Star] Nice! I've marked this task as done:
+       [T][X] run
+
+[Star] OK, I've marked this task as not done yet:[T][ ] run
+
+[Star] Nice! I've marked this task as done:[T][X] assignment cs2103de
+
+[Star] I have added a new task: me4231 assignment
+       [D][ ] me4231 assignment (by: Feb/5/2026)
+
+[Star] I have added a new task: meeting
+       [E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+
+[Star] Tasklist:
+       1.[T][ ] run
+       2.[T][X] assignment cs2103de
+       3.[D][ ] me4231 assignment (by: Feb/5/2026)
+       4.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+       Invalid index!
+
+[Star] ERROR! Empty task description!
+
+[Star] Tasklist:
+       1.[T][ ] run
+       2.[T][X] assignment cs2103de
+       3.[D][ ] me4231 assignment (by: Feb/5/2026)
+       4.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+
+[Star] ERROR! /by not found
+
+[Star] Tasklist:
+       1.[T][ ] run
+       2.[T][X] assignment cs2103de
+       3.[D][ ] me4231 assignment (by: Feb/5/2026)
+       4.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+
+[Star] I have removed this task: run
+       [T][ ] run
+
+[Star] I have removed this task: me4231 assignment
+       [D][ ] me4231 assignment (by: Feb/5/2026)
+
+[Star] Tasklist:
+       1.[T][X] assignment cs2103de
+       2.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+
+[Star] Tasks Saved
+
+[Star] I have added a new task: ee4308 assignment
+       [D][ ] ee4308 assignment (by: Feb/5/2026)
+
+[Star] I have added a new task: cs2103de assignment
+       [D][ ] cs2103de assignment (by: Feb/8/2026)
+
+[Star] Here are the matching tasks in your list:
+       1.[T][X] assignment cs2103de
+       2.[D][ ] ee4308 assignment (by: Feb/5/2026)
+       3.[D][ ] cs2103de assignment (by: Feb/8/2026)
+
+
+[Star] Either you run the day or the day runs you.
+                                        - Jim Rohn
+
+[Star] Bye. Hope to see you again soon!

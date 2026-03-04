@@ -10,7 +10,7 @@ BOLD='\033[1m'
 
 # Print header
 echo -e "${BOLD}===============================================${NC}"
-echo -e "${BLUE}               Duke Test Runner               ${NC}"
+echo -e "${BLUE}               Star Test Runner               ${NC}"
 echo -e "${BOLD}===============================================${NC}\n"
 
 # Print Java version for debugging
@@ -25,9 +25,9 @@ version=$(echo $java_ver | sed -n 's/.*version "\([0-9]*\).*/\1/p')
 echo -e "${BLUE}Parsed major version: ${NC}$version"
 
 if [ "$version" != "21" ]; then
-    echo -e "\n${RED}╔════ ERROR ══════════════════════════════════╗${NC}"
-    echo -e "${RED}║ Please use Java 21 (current version: $version)${NC}"
-    echo -e "${RED}╚═════════════════════════════════════════════╝${NC}"
+    echo -e "\n${RED}╔════ ERROR ════════════════════════════════════╗${NC}"
+    echo -e "${RED}║ Please use Java 21 (current version: $version)║${NC}"
+    echo -e "${RED}╚═══════════════════════════════════════════════╝${NC}"
     exit 1
 fi
 
@@ -53,7 +53,7 @@ echo -e "\n${BOLD}[3/4] Compiling source files...${NC}"
 if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
 then
     echo -e "\n${RED}╔════ ERROR ══════════════════════════════════╗${NC}"
-    echo -e "${RED}║            BUILD FAILURE                     ║${NC}"
+    echo -e "${RED}║            BUILD FAILURE                    ║${NC}"
     echo -e "${RED}╚═════════════════════════════════════════════╝${NC}"
     exit 1
 fi
@@ -61,7 +61,7 @@ echo -e "${GREEN}✓ Compilation successful${NC}\n"
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 echo -e "${BOLD}[4/4] Running tests...${NC}"
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+java -classpath ../bin Star < input.txt > ACTUAL.TXT
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT
@@ -72,12 +72,12 @@ diff ACTUAL.TXT EXPECTED-UNIX.TXT
 if [ $? -eq 0 ]
 then
     echo -e "\n${GREEN}╔════ SUCCESS ════════════════════════════════╗${NC}"
-    echo -e "${GREEN}║              All tests passed                ║${NC}"
+    echo -e "${GREEN}║              All tests passed               ║${NC}"
     echo -e "${GREEN}╚═════════════════════════════════════════════╝${NC}"
     exit 0
 else
-    echo -e "\n${RED}╔════ ERROR ══════════════════════════════════╗${NC}"
+    echo -e "\n${RED}╔════ ERROR ════════════════════════════════════╗${NC}"
     echo -e "${RED}║              Tests FAILED                     ║${NC}"
-    echo -e "${RED}╚═════════════════════════════════════════════╝${NC}"
+    echo -e "${RED}╚═══════════════════════════════════════════════╝${NC}"
     exit 1
 fi

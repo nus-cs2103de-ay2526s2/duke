@@ -1,0 +1,23 @@
+todo run
+todo assignment CS2103DE
+mark 1
+unmark 1
+mark 2
+deadline ME4231 assignment /by 2026-02-05 12:00
+event meeting /st 2026-02-05 14:00 /by 2026-02-05 16:00
+list
+mark
+todo
+list
+deadline submission
+list
+delete 1
+delete 2
+list
+save
+deadline EE4308 assignment /by 2026-02-05
+deadline CS2103DE assignment /by 2026-02-08
+find assignment
+cheer
+bye
+todo sleep

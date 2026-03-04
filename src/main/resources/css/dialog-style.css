@@ -1,0 +1,85 @@
+/* Base text formatting inside bubbles */
+.chat-bubble {
+    -fx-padding: 12px;
+    -fx-background-radius: 15px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+
+/* User Bubble: Muted teal/dark blue */
+.user-bubble {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #F8FAFC; /* Off-white text for readability */
+}
+
+/* Bot Bubble: Deep blueish-purple */
+.star-bubble {
+    -fx-background-color: #3730A3;
+    -fx-text-fill: #F8FAFC;
+}
+
+/* Force the error style to override the default text field style */
+.text-field.error-text-field {
+    -fx-background-color: #450a0a; /* Very dark red background */
+    -fx-border-color: #ef4444;     /* Bright red border to catch attention */
+    -fx-border-width: 2px;
+    -fx-text-fill: #fecaca;        /* Light pink/white text so it remains readable */
+}
+
+/* Text Field Styling */
+.text-field {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #94A3B8;
+    -fx-font-size: 14px;
+}
+
+/* Deep night-sky background for the chat area */
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: #0B0E14; /* Very dark blue/black */
+    -fx-border-color: transparent;
+}
+
+/* 1. Hide the dropdown arrow completely */
+#commandDropdown .arrow-button {
+    -fx-padding: 0;
+}
+
+#commandDropdown .arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-shape: null; /* Removes the triangle shape */
+}
+
+/* Style the ☰ icon to be larger and centered */
+#commandDropdown {
+    -fx-font-size: 18px;   /* Makes the ☰ much bigger */
+    -fx-font-weight: bold; /* Makes the lines thicker */
+    -fx-alignment: center; /* Centers the icon perfectly */
+    -fx-padding: 0;        /* Removes default padding pushing it off-center */
+}
+
+/* Reset the font size and weight for the items in the list */
+.menu-item {
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+/* Theme the dropdown background to match the dark app */
+.context-menu {
+    -fx-background-color: #1E293B; /* Dark blue background */
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #4F46E5; /* Indigo border */
+}
+
+/* Make the text inside the list white for readability */
+.menu-item .label {
+    -fx-text-fill: #F8FAFC;
+}
+
+/* Change the background color when hovering over an item */
+.menu-item:focused {
+    -fx-background-color: #3730A3; /* Deep blueish-purple hover */
+}
