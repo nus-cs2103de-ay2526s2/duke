@@ -1,0 +1,19 @@
+list
+blah
+help
+mark
+todo
+deadline submit report
+todo read book
+deadline return book /by 2025-02-01
+event team meeting /from Mon 2pm /to 3pm
+list
+mark 1
+mark 2
+unmark 1
+list
+delete 2
+list
+delete
+delete 5
+bye

@@ -1,0 +1,202 @@
+package spot.command;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+import spot.task.Deadline;
+import spot.task.Event;
+import spot.task.Task;
+import spot.task.Todo;
+
+/**
+ * Parses user input into commands and creates Task instances from command arguments.
+ */
+public class Parser {
+    private static final String CMD_LIST = "list";
+    private static final String CMD_BYE = "bye";
+    private static final String CMD_MARK = "mark";
+    private static final String CMD_UNMARK = "unmark";
+    private static final String CMD_TODO = "todo";
+    private static final String CMD_DEADLINE = "deadline";
+    private static final String CMD_EVENT = "event";
+    private static final String CMD_DELETE = "delete";
+    private static final String CMD_HELP = "help";
+    private static final String CMD_CHEER = "cheer";
+    private static final String CMD_ON = "on";
+    private static final String CMD_FIND = "find";
+
+    /**
+     * Parses a trimmed user input line into a {@link ParsedCommand}.
+     *
+     * @param trimmedInput non-null trimmed input (e.g. "list", "mark 1", "deadline x /by 2025-01-01")
+     * @return the parsed command (type UNKNOWN if unrecognized)
+     */
+    public static ParsedCommand parse(String trimmedInput) {
+        assert trimmedInput != null : "trimmed input must not be null";
+        if (trimmedInput.equalsIgnoreCase(CMD_BYE)) {
+            return new ParsedCommand(CommandType.BYE, null);
+        }
+
+        if (trimmedInput.equalsIgnoreCase(CMD_LIST)) {
+            return new ParsedCommand(CommandType.LIST, null);
+        }
+
+        if (trimmedInput.equalsIgnoreCase(CMD_HELP)) {
+            return new ParsedCommand(CommandType.HELP, null);
+        }
+
+        if (trimmedInput.equalsIgnoreCase(CMD_CHEER)) {
+            return new ParsedCommand(CommandType.CHEER, null);
+        }
+
+        String[] parts = trimmedInput.split("\\s+", 2);
+        String rawCommand = parts[0];
+        String lowerCommand = rawCommand.toLowerCase();
+
+        if (lowerCommand.equals(CMD_FIND)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.FIND, argument);
+        }
+
+        if (lowerCommand.equals(CMD_ON)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.ON, argument);
+        }
+
+        if (lowerCommand.equals(CMD_MARK) || lowerCommand.equals(CMD_UNMARK)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            CommandType type = lowerCommand.equals(CMD_MARK) ? CommandType.MARK : CommandType.UNMARK;
+            return new ParsedCommand(type, argument);
+        }
+
+        if (lowerCommand.equals(CMD_DELETE)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.DELETE, argument);
+        }
+
+        if (lowerCommand.equals(CMD_TODO)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.TODO, argument);
+        }
+
+        if (lowerCommand.equals(CMD_DEADLINE)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.DEADLINE, argument);
+        }
+
+        if (lowerCommand.equals(CMD_EVENT)) {
+            String argument = parts.length > 1 ? parts[1].trim() : "";
+            return new ParsedCommand(CommandType.EVENT, argument);
+        }
+
+        return new ParsedCommand(CommandType.UNKNOWN, null);
+    }
+
+    /**
+     * Returns a user-facing error message when add/todo/deadline/event parsing fails.
+     *
+     * @param type the command type that failed
+     * @return short message explaining the expected format
+     */
+    public static String getAddTaskErrorMessage(CommandType type) {
+        return switch (type) {
+        case DEADLINE -> "Deadline must have a description and /by <date>. "
+                + "Example: deadline submit report /by 2025-02-01";
+        case EVENT -> "Event must have a description, /from <start>, and /to <end>. "
+                + "Example: event team meeting /from Mon 2pm /to 3pm";
+        default -> "I need more details. Use: deadline <description> /by <date>, "
+                + "or event <description> /from <start> /to <end>";
+        };
+    }
+
+    /**
+     * Creates a Task from a parsed add/todo/deadline/event command.
+     *
+     * @param parsedCommand the parsed command (TODO, DEADLINE, EVENT, or ADD)
+     * @return the created task, or null if the argument format is invalid
+     */
+    public static Task createTask(ParsedCommand parsedCommand) {
+        assert parsedCommand != null : "parsed command must not be null";
+        String argument = parsedCommand.argument() == null ? "" : parsedCommand.argument();
+        return switch (parsedCommand.type()) {
+        case TODO, ADD -> argument.isEmpty() ? null : new Todo(argument);
+        case DEADLINE -> {
+            int byIndex = argument.indexOf(" /by ");
+            if (byIndex < 0) {
+                yield null;
+            }
+            String description = argument.substring(0, byIndex).trim();
+            String byStr = argument.substring(byIndex + 5).trim();
+            if (description.isEmpty() || byStr.isEmpty()) {
+                yield null;
+            }
+            LocalDateTime by = parseDateTime(byStr);
+            yield by == null ? null : new Deadline(description, by);
+        }
+        case EVENT -> {
+            int fromIndex = argument.indexOf(" /from ");
+            int toIndex = argument.indexOf(" /to ");
+            if (fromIndex < 0 || toIndex < 0 || toIndex <= fromIndex) {
+                yield null;
+            }
+            assert fromIndex + 7 <= toIndex && toIndex + 5 <= argument.length()
+                    : "event /from and /to indices must be within argument bounds";
+            String description = argument.substring(0, fromIndex).trim();
+            String from = argument.substring(fromIndex + 7, toIndex).trim();
+            String to = argument.substring(toIndex + 5).trim();
+            yield description.isEmpty() || from.isEmpty() || to.isEmpty()
+                    ? null : new Event(description, from, to);
+        }
+        default -> null;
+        };
+    }
+
+    /**
+     * Parses a date string (yyyy-mm-dd or d/M/yyyy) into a date at start of day.
+     *
+     * @param input the date string; may be null or blank
+     * @return the parsed date, or null if unparseable
+     */
+    public static LocalDate parseDate(String input) {
+        LocalDateTime ldt = parseDateTime(input);
+        return ldt == null ? null : ldt.toLocalDate();
+    }
+
+    /**
+     * Parses a date or date-time string. Supports ISO date, d/M/yyyy, and d/M/yyyy HHmm.
+     *
+     * @param dateTimeString the input string; null or blank returns null
+     * @return the parsed date-time (midnight if date-only), or null if unparseable
+     */
+    private static LocalDateTime parseDateTime(String dateTimeString) {
+        if (dateTimeString == null || dateTimeString.isBlank()) {
+            return null;
+        }
+        String trimmedInput = dateTimeString.trim();
+
+        try {
+            LocalDate parsedDate = LocalDate.parse(trimmedInput);
+            return parsedDate.atStartOfDay();
+        } catch (DateTimeParseException ignored) {
+            // Try next format.
+        }
+
+        DateTimeFormatter withTime = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        try {
+            return LocalDateTime.parse(trimmedInput, withTime);
+        } catch (DateTimeParseException ignored) {
+            // Try next format.
+        }
+
+        DateTimeFormatter dateOnly = DateTimeFormatter.ofPattern("d/M/yyyy");
+        try {
+            LocalDate parsedDate = LocalDate.parse(trimmedInput, dateOnly);
+            return parsedDate.atStartOfDay();
+        } catch (DateTimeParseException ignored) {
+            // Unparseable with all supported formats.
+            return null;
+        }
+    }
+}

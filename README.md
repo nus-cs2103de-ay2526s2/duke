@@ -25,6 +25,11 @@ Prerequisites: JDK 21.
 
 **Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
 
+## Running the application
+
+- **GUI (JavaFX):** `./gradlew run` (or run `spot.Launcher` from your IDE). This opens the Spot chatbot window. Place **DaUser.png** and **DaSpot.png** in `src/main/resources/images/` for user and Spot avatars (optional; a placeholder is used if missing).
+- **Text UI (CLI):** Run `spot.Spot` as the main class (e.g. right-click `Spot.java` → Run). Uses the same commands and data file (`data/spot.txt`).
+
 ## Running Tests
 
 The project comes with a set of test scripts for different operating systems:
@@ -42,3 +47,31 @@ The project comes with a set of test scripts for different operating systems:
   ```
 
 These scripts will compile the source files, run the tests, and compare the output against the expected output.
+
+## Packaging as an executable JAR
+
+This project is configured to build a self-contained executable JAR (a “fat jar”) that can be distributed and run without any additional classpath setup.
+
+### Build the JAR
+
+```bash
+./gradlew clean shadowJar
+```
+
+On Windows PowerShell:
+
+```powershell
+.\gradlew.bat clean shadowJar
+```
+
+The executable JAR will be created at `build/libs/spot.jar`.
+
+### Run the JAR
+
+1. Copy `build/libs/spot.jar` into an empty folder.
+2. Open a command window in that folder.
+3. Run:
+
+```bash
+java -jar "spot.jar"
+```
