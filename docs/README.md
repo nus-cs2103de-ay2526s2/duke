@@ -1,30 +1,5 @@
-# Duke User Guide
+# Listo
 
-// Update the title above to match the actual product name
+Welcome to the documentation for **Listo**, a personal assistant chatbot designed to help you manage your tasks efficiently!
 
-// Product screenshot goes here
-
-// Product intro goes here
-
-## Adding deadlines
-
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details
+📖 **[Click here](UserGuide.md)** to get up and running quickly and explore all the features Listo has to offer.
