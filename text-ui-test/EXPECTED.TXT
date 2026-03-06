@@ -1,7 +1,15 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello I am ChatterBot! I was created by github user Siaoarh
+How can I help you today?
+Okay can. I have added this.
+  [T][ ] cut hair
+Now you have 1 tasks in the list.
+Okay can. I have added this.
+  [D][ ] grow hair (by: Sunday)
+Now you have 2 tasks in the list.
+Hello! An event must have '/from <start> /to <end>'. Please try again.
+Here are the tasks in your list:
+1.[T][ ] cut hair
 
+2.[D][ ] grow hair (by: Sunday)
+
+Goodbye!

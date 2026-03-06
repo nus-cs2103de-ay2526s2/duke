@@ -1,0 +1,122 @@
+/* ===== Root Pane ===== */
+.root-pane {
+    -fx-background-color: #e8e8ed;
+}
+
+/* ===== Scroll Pane ===== */
+.chat-scroll-pane {
+    -fx-background: #e8e8ed;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.chat-scroll-pane > .viewport {
+    -fx-background-color: #e8e8ed;
+}
+
+.chat-scroll-pane .scroll-bar:vertical {
+    -fx-pref-width: 6px;
+}
+
+.chat-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #b0b0b0;
+    -fx-background-radius: 3px;
+}
+
+.chat-scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.chat-scroll-pane .scroll-bar:vertical .increment-button,
+.chat-scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-pref-height: 0;
+    -fx-padding: 0;
+}
+
+/* ===== Dialog Container ===== */
+.dialog-container {
+    -fx-background-color: #e8e8ed;
+    -fx-padding: 10 6 10 6;
+}
+
+/* ===== Chat Bubbles ===== */
+.chat-label {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 14px;
+    -fx-label-padding: 2 0 2 0;
+}
+
+/* User bubble - right side, blue/teal */
+.user-bubble {
+    -fx-background-color: #007aff;
+    -fx-text-fill: white;
+    -fx-background-radius: 16 16 4 16;
+}
+
+/* Bot bubble - left side, light gray */
+.bot-bubble {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #1c1c1e;
+    -fx-background-radius: 16 16 16 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 1);
+}
+
+/* Error bubble - left side, reddish */
+.error-bubble {
+    -fx-background-color: #fff0f0;
+    -fx-text-fill: #c0392b;
+    -fx-background-radius: 16 16 16 4;
+    -fx-border-color: #e74c3c;
+    -fx-border-radius: 16 16 16 4;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.12), 4, 0, 0, 1);
+}
+
+/* ===== Dialog Box Layout ===== */
+.user-dialog {
+    -fx-alignment: center-right;
+}
+
+.bot-dialog {
+    -fx-alignment: center-left;
+}
+
+/* ===== Input Area ===== */
+.chat-input {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d6;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 10 12 10 12;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #8e8e93;
+    -fx-background-radius: 0;
+}
+
+.chat-input:focused {
+    -fx-border-color: #007aff;
+    -fx-border-width: 2 0 0 0;
+}
+
+/* ===== Send Button ===== */
+.send-button {
+    -fx-background-color: #007aff;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #0066d6;
+}
+
+.send-button:hover {
+    -fx-background-color: #0066d6;
+}
+
+.send-button:pressed {
+    -fx-background-color: #004ea2;
+}
