@@ -40,7 +40,10 @@ public class DialogBox extends HBox {
         displayPicture.setImage(img);
 
         // clip the image to make it circular
-        Circle clip = new Circle(40, 40, 40);
+        displayPicture.setFitHeight(40);
+        displayPicture.setFitWidth(40);
+        displayPicture.setPreserveRatio(true);
+        Circle clip = new Circle(20, 20, 20);
         displayPicture.setClip(clip);
 
         applyThemeBasedOnTime(); // adjust colors for day/night mode
@@ -90,6 +93,9 @@ public class DialogBox extends HBox {
             break;
         case "delete":
             dialog.getStyleClass().add("delete-label");
+            break;
+        case "error":
+            dialog.getStyleClass().add("error-label");
             break;
         default:
             // no special styling for other commands
