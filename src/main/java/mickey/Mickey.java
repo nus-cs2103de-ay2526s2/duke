@@ -565,6 +565,12 @@ public class Mickey {
             return "Gosh, you can't add an empty todo! Give me something to work with!";
         }
         String description = Parser.getTodoDescription(input);
+        boolean isSameTask = tasks.getAllTasks().stream()
+            .anyMatch(task -> task instanceof Todo && task.getDescription().equalsIgnoreCase(description));
+        if (isSameTask) {
+            lastCommandType = "error";
+            return "Gosh, you have added the same thing before! Try again pal!";
+        }
         Todo newTodo = new Todo(description);
         tasks.addTask(newTodo);
         taskCount++;
@@ -616,6 +622,10 @@ public class Mickey {
             Object[] deadlineDetails = Parser.getDeadline(input);
             String description = (String) deadlineDetails[0];
             LocalDate dateBy = (LocalDate) deadlineDetails[1];
+            if (dateBy.isBefore(LocalDate.now())) {
+                lastCommandType = "error";
+                return "Gosh, the deadline date is past us! Try again pal!";
+            }
             Deadline newDeadline = new Deadline(description, dateBy);
             tasks.addTask(newDeadline);
             taskCount++;
@@ -646,6 +656,10 @@ public class Mickey {
             String description = (String) eventDetails[0];
             LocalDateTime dateFrom = (LocalDateTime) eventDetails[1];
             LocalDateTime dateTo = (LocalDateTime) eventDetails[2];
+            if (dateFrom.isBefore(LocalDateTime.now()) || dateTo.isBefore(LocalDateTime.now())) {
+                lastCommandType = "error";
+                return "Gosh, the event date is past us! Try again pal!";
+            }
             Event newEvent = new Event(description, dateFrom, dateTo);
             tasks.addTask(newEvent);
             taskCount++;
