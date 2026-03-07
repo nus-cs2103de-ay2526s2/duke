@@ -32,7 +32,7 @@ public class TestMickey {
         // Test adding a todo task
         String response = mickey.getResponse("todo buy groceries");
 
-        assertTrue(response.contains("Got it!") || response.contains("Added"));
+        assertTrue(response.contains("Got it!") || response.contains("added"));
         assertTrue(response.contains("buy groceries"));
         assertEquals("todo", mickey.getLastCommandType());
     }

@@ -68,6 +68,11 @@ public class FileSaver {
             return tasks;
         }
 
+        if (!Files.isReadable(filePath)) {
+            System.out.println("Cannot read file: " + filePath);
+            return tasks;
+        }
+
         try {
             List<String> lines = Files.readAllLines(filePath);
             for (String line : lines) {
