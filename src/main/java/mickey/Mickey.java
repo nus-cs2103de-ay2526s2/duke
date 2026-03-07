@@ -562,7 +562,7 @@ public class Mickey {
     private String getTodoResponse(String input) {
         if (input.length() <= 4) {
             lastCommandType = "error";
-            return "Gosh, you can't add an empty todo! Give me something to work with!";
+            return "Gosh, you can't add an empty todo!!";
         }
         String description = Parser.getTodoDescription(input);
         boolean isSameTask = tasks.getAllTasks().stream()
