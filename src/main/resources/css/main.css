@@ -37,7 +37,7 @@
 .button {
     -fx-background-color: linear-gradient(to bottom, #5fa3e8, #4a90e2);
     -fx-text-fill: white;
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-family: "Arial", sans-serif;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;

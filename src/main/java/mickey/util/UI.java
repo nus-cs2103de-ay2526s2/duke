@@ -22,11 +22,9 @@ public class UI {
      * Displays welcome logo and message
      */
     public void welcomeLogo() {
-        String logo = "( o.o )\n" // animal face
-                    + "  >^< ";
-
+        String welcome = "Oh boy! Hi there! I'm Mickey! Hot dog! Let's get organised!!";
         System.out.println(LINE);
-        System.out.println(" Hello! I'm Mickey\n" + logo + "\n");
+        System.out.println(welcome);
         System.out.println(" What can I do for you?");
         System.out.println(LINE);
     }
@@ -36,7 +34,7 @@ public class UI {
      */
     public void sayBye() {
         System.out.println(LINE);
-        System.out.println(" Chat says bye. Hope to see you again soon! :D ");
+        System.out.println(" Hot Dog! Bye for now pal");
         System.out.println(LINE);
     }
 
@@ -60,14 +58,14 @@ public class UI {
      * Error for invalid date format
      */
     public void showInvalidDate() {
-        System.out.println("Please enter a valid date in the format dd-MM-yyyy.");
+        System.out.println("Gosh, please enter a valid date in the format dd-MM-yyyy.");
     }
 
     /**
      * Error for due command
      */
     public void showDueCommandError() {
-        System.out.println("Ensure you use the command 'due' followed by the date in the format dd-MM-yyyy.");
+        System.out.println("Gosh, ensure you use the command 'due' followed by the date in the format dd-MM-yyyy.");
     }
 
     /**
@@ -76,9 +74,9 @@ public class UI {
      * @param matchResults the matching tasks
      */
     public void showKeywordResults(ArrayList<Task> matchResults) {
-        System.out.println("Here are the matching tasks:");
+        System.out.println("Hot Dog! Here are the matching tasks:");
         if (matchResults.isEmpty()) {
-            System.out.println("No tasks match the keyword.");
+            System.out.println("Gosh, no tasks match the keyword.");
         } else {
             for (int i = 0; i < matchResults.size(); i++) {
                 System.out.println((i + 1) + "." + matchResults.get(i).toString());
@@ -91,9 +89,9 @@ public class UI {
      */
     public void showDueTasks(ArrayList<Task> dueTasks, LocalDate date) {
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-        System.out.println("Here are the tasks due on " + formattedDate + ":");
+        System.out.println("Hot Dog! Here are the tasks due on " + formattedDate + ":");
         if (dueTasks.isEmpty()) {
-            System.out.println("No tasks are due on " + formattedDate + ".");
+            System.out.println("Gosh, no tasks are due on " + formattedDate + ".");
         } else {
             for (int i = 0; i < dueTasks.size(); i++) {
                 System.out.println((i + 1) + "." + dueTasks.get(i).toString());
@@ -105,7 +103,7 @@ public class UI {
      * Displays reminder tasks
      */
     public void showDueTasks(ArrayList<Task> tasksPending) {
-        System.out.println("Here are the tasks due in the next 7 days:");
+        System.out.println("Hot Dog! Here are the tasks due in the next 7 days:");
         for (int i = 0; i < tasksPending.size(); i++) {
             System.out.println((i + 1) + "." + tasksPending.get(i).toString());
         }
@@ -115,28 +113,28 @@ public class UI {
      * Displays all tasks in the list
      */
     public void allTaskList() {
-        System.out.println("Here are the tasks in your list:");
+        System.out.println("Hot Dog! Here are the tasks in your list:");
     }
 
     /**
      * Displays invalid task
      */
     public void showInvalidTaskNumber() {
-        System.out.println("Please choose a task number within the list.");
+        System.out.println("Gosh, please choose a task number within the list.");
     }
 
     /**
      * Displays marked task message
      */
     public void showMarked() {
-        System.out.println("Niceeee! I've marked this task as done:");
+        System.out.println("Yay yippee! Way to go! This as done:");
     }
 
     /**
      * Displays unmarked task message
      */
     public void showUnmarked() {
-        System.out.println("Okie, I've marked this task as not done yet:");
+        System.out.println("Alrighty, unmarked this one:");
     }
 
     /**
@@ -152,14 +150,14 @@ public class UI {
      * Displays deleted task message
      */
     public void showDeleted(String task, int taskCount) {
-        System.out.println("Okie, I've removed this task:");
+        System.out.println("Alrighty, deleted this one:");
         System.out.println(" " + task);
         if (taskCount == 0) {
-            System.out.println(" Now you have no tasks in the list.");
+            System.out.println(" Now you have no tasks in the list pal.");
         } else if (taskCount == 1) {
-            System.out.println(" Now you have " + taskCount + " task in the list.");
+            System.out.println(" Now you have " + taskCount + " task in the list pal.");
         } else {
-            System.out.println(" Now you have " + taskCount + " tasks in the list.");
+            System.out.println(" Now you have " + taskCount + " tasks in the list pal.");
         }
     }
 
@@ -167,33 +165,33 @@ public class UI {
      * Displays number format error
      */
     public void showNumberFormatError() {
-        System.out.println("Oops, please use the task number for selection.");
+        System.out.println("Gosh, please use the task number for selection.");
     }
 
     /**
      * Displays empty todo error
      */
     public void showEmptyTodoError() {
-        System.out.println("Please enter a description of your todo item");
+        System.out.println("Gosh, please enter a description of your todo item");
     }
 
     /**
      * Displays message that all tasks are done
      */
     public void showNoTask() {
-        System.out.println("You are done with all your tasks! Good job!");
+        System.out.println("You are done with all your tasks! Good job pal!");
     }
 
     /**
      * Displays task added message and current tasks
      */
     public void showTaskAdded(String taskString, int taskCount) {
-        System.out.println(" Got it. I've added this task:");
+        System.out.println(" Alrighty! I have added this task:");
         System.out.println("  " + taskString);
         if (taskCount == 1) {
-            System.out.println(" Now you have " + taskCount + " task in the list.");
+            System.out.println(" Now you have " + taskCount + " task in the list pal.");
         } else {
-            System.out.println(" Now you have " + taskCount + " tasks in the list.");
+            System.out.println(" Now you have " + taskCount + " tasks in the list pal.");
         }
     }
 
@@ -201,42 +199,42 @@ public class UI {
      * Displays deadline empty error
      */
     public void showDeadlineEmptyError() {
-        System.out.println("Oops please specify the item and deadline");
+        System.out.println("Gosh, please specify the item and deadline");
     }
 
     /**
      * Displays no due tasks error
      */
     public void showNoDue() {
-        System.out.println("Lucky you, no tasks due today!");
+        System.out.println("Lucky you, no tasks due today pal!");
     }
 
     /**
      * Displays missing date error
      */
     public void showDeadlineMissingDateError() {
-        System.out.println("Remember to enter the deadline dateee!");
+        System.out.println("Gosh, remember to enter the deadline dateee!");
     }
 
     /**
      * Displays no description error
      */
     public void showDeadlineNoDescriptionError() {
-        System.out.println("Hmmm there seems to be no description..");
+        System.out.println("Hmmm gosh, there seems to be no description..");
     }
 
     /**
      * Displays event empty error
      */
     public void showEventEmptyError() {
-        System.out.println("You havent entered any event details yet!");
+        System.out.println("Gosh, you havent entered any event details yet!");
     }
 
     /**
      * Displays missing dates error
      */
     public void showEventMissingDatesError() {
-        System.out.println("You havent entered any event dates yet...");
+        System.out.println("Gosh, you havent entered any event dates yet");
     }
 
     /**

@@ -40,7 +40,7 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty()); // auto-scroll to bottom
         applyThemeBasedOnTime();
-        String welcome = "Hey there! I'm Mickey\n( o.o )\n  >^<\n\n Let's do this!";
+        String welcome = "Oh boy! Hi there! I'm Mickey! Hot dog! Let's get organised!!";
         dialogContainer.getChildren().add(DialogBox.getMickeyDialog(welcome, mickeyImage));
     }
 

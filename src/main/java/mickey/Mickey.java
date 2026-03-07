@@ -40,7 +40,7 @@ public class Mickey {
         this.taskCount = tasks.size();
         this.quotes = saver.loadQuotes();
         this.lastCommandType = null;
-        assert taskCount >= 0 : "Task count should not be negative";
+        assert taskCount >= 0 : "Gosh, Task count cant be negative buddy";
     }
 
     /**
@@ -133,7 +133,7 @@ public class Mickey {
      */
     private void handleFindCommand(String userInput) {
         if (userInput.length() <= 4) {
-            System.out.println("Please enter the keyword to search by");
+            System.out.println("Gosh you gotta enter a keyword to search by");
             return;
         }
         String keyword = Parser.getKeywordToSearch(userInput);
@@ -218,7 +218,7 @@ public class Mickey {
      */
     private void handleCheerCommand() {
         if (quotes.isEmpty()) {
-            System.out.println(" Keep coding! You're doing great!");
+            System.out.println(" Way to Go!Keep coding! You're doing great!");
             return;
         }
         Random random = new Random();
@@ -371,7 +371,7 @@ public class Mickey {
     public String getResponse(String input) {
         if (input.equals("bye")) {
             lastCommandType = null;
-            return "Aww bye bye! Catch you later!";
+            return "Hot Dog! Bye for now pal";
         }
 
         String command = Parser.getCommand(input);
@@ -403,7 +403,7 @@ public class Mickey {
             }
         } catch (Exception e) {
             lastCommandType = "error";
-            return "Oops! Something went wrong: " + e.getMessage();
+            return "Gosh! I think something went wrong: " + e.getMessage();
         }
     }
 
@@ -413,14 +413,14 @@ public class Mickey {
         taskCount++;
         saveTask();
         lastCommandType = "echo";
-        return "Got it! Added:\n  " + echoTask.toString()
+        return "Alrighty! Added:\n  " + echoTask.toString()
                 + "\n\nYou now have " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " total.";
     }
 
     private String getListResponse() {
         if (taskCount == 0) {
             lastCommandType = "list";
-            return "Your list is empty! Time to add some tasks maybe?";
+            return "Gosh! Your list is empty pal! Let's add some tasks maybe?";
         }
         StringBuilder response = new StringBuilder("Alright, here's what you've got:\n");
         for (int i = 0; i < taskCount; i++) {
@@ -442,9 +442,9 @@ public class Mickey {
             }
         }
         if (tasksPending.isEmpty()) {
-            return "Lucky you, no tasks due in the next 7 days!";
+            return "Yippee, no tasks due in the next 7 days!";
         }
-        StringBuilder response = new StringBuilder("Here are the tasks due in the next 7 days:\n");
+        StringBuilder response = new StringBuilder("Take a look at your tasks due in the next 7 days:\n");
         for (int i = 0; i < tasksPending.size(); i++) {
             response.append((i + 1)).append(". ").append(tasksPending.get(i).toString()).append("\n");
         }
@@ -464,10 +464,10 @@ public class Mickey {
 
         if (matchResults.isEmpty()) {
             lastCommandType = "error";
-            return "Hmm, couldn't find anything matching '" + keyword + "'";
+            return "Hmm gosh, couldn't find anything matching '" + keyword + "'";
         }
 
-        StringBuilder response = new StringBuilder("Found these for you:\n");
+        StringBuilder response = new StringBuilder("Hot Dog! Found these tasks waiting for you pal:\n");
         IntStream.range(0, matchResults.size())
                 .forEach(i -> response.append((i + 1)).append(". ")
                         .append(matchResults.get(i).toString()).append("\n"));
@@ -482,7 +482,7 @@ public class Mickey {
 
             if (taskIndex < 0 || taskIndex >= taskCount) {
                 lastCommandType = "error";
-                return "Oops! That task number doesn't exist!";
+                return "Gosh! That task number doesn't exist!";
             }
 
             Task deletedTask = tasks.deleteTask(taskIndex);
@@ -492,14 +492,14 @@ public class Mickey {
             return "Alrighty, deleted this one:\n  " + deletedTask.toString()
                     + "\nYou've got " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " left!";
         } catch (NumberFormatException e) {
-            return "Hey, I need a valid task number!";
+            return "Gosh, I need a valid task number!";
         }
     }
 
     private String getCheerResponse() {
         if (quotes.isEmpty()) {
             lastCommandType = "cheer";
-            return "You're doing amazing! Keep crushing it!";
+            return "You're doing awesome pal!";
         }
         Random random = new Random();
         int randomIndex = random.nextInt(quotes.size());
@@ -509,23 +509,19 @@ public class Mickey {
 
     private String getMarkResponse(String input) {
         try {
-            System.out.println("DEBUG: getMarkResponse called with: " + input);
             int taskIndex = getTaskIndex(input);
-            System.out.println("DEBUG: taskIndex = " + taskIndex);
             if (taskIndex < 0) {
                 lastCommandType = "error";
-                return "Hmm, that task number doesn't exist!";
+                return "Hmm gosh, that task number doesn't exist!";
             }
             tasks.markTask(taskIndex);
             Task selectedTask = tasks.getTask(taskIndex);
             saveTask();
             lastCommandType = "mark";
-            System.out.println("DEBUG: Setting lastCommandType = mark");
-            return "Yay! Marked this as done:\n  " + selectedTask.toString() + "\n\nNice work!";
+            return "Yay yippee! Way to go! This as done:\n  " + selectedTask.toString() + "\n\nGreat work!";
         } catch (NumberFormatException e) {
             lastCommandType = "error";
-            System.out.println("DEBUG: NumberFormatException caught");
-            return "Hey, gimme a valid task number!";
+            return "Gosh, gimme a valid task number!";
         }
     }
 
@@ -534,16 +530,16 @@ public class Mickey {
             int taskIndex = getTaskIndex(input);
             if (taskIndex < 0) {
                 lastCommandType = "error";
-                return "Hmm, that task number doesn't exist!";
+                return "Hmm gosh, that task number doesn't exist!";
             }
             tasks.unmarkTask(taskIndex);
             Task selectedTask = tasks.getTask(taskIndex);
             saveTask();
             lastCommandType = "unmark";
-            return "Okay okay, unmarked this one:\n  " + selectedTask.toString() + "\n\nback to other stuff!";
+            return "Alrighty, unmarked this one:\n  " + selectedTask.toString() + "\n\nback to other stuff!";
         } catch (NumberFormatException e) {
             lastCommandType = "error";
-            return "Hey, gimme a valid task number!";
+            return "Gosh, gimme a valid task number!";
         }
     }
 
@@ -566,7 +562,7 @@ public class Mickey {
     private String getTodoResponse(String input) {
         if (input.length() <= 4) {
             lastCommandType = "error";
-            return "Wait, you can't add an empty todo! Give me something to work with!";
+            return "Gosh, you can't add an empty todo! Give me something to work with!";
         }
         String description = Parser.getTodoDescription(input);
         Todo newTodo = new Todo(description);
@@ -574,8 +570,8 @@ public class Mickey {
         taskCount++;
         saveTask();
         lastCommandType = "todo";
-        return "Got it! Added:\n  " + newTodo.toString()
-                + "\n\nYou now have " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " total.";
+        return "Alrighty! I have added:\n  " + newTodo.toString()
+                + "\n\nYou now have " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " in your list pal.";
     }
 
     private String getDueResponse(String input) {
@@ -587,10 +583,10 @@ public class Mickey {
 
             if (dueTasks.isEmpty()) {
                 lastCommandType = "due";
-                return "Nothing due on " + date + "! You're free that day!";
+                return "Nothing due on " + date + "! You're free that day pal!";
             }
 
-            StringBuilder response = new StringBuilder("Here's what's due on " + date + ":\n");
+            StringBuilder response = new StringBuilder("Hot Dog! Here's what's due on " + date + ":\n");
             for (int i = 0; i < dueTasks.size(); i++) {
                 response.append((i + 1)).append(". ").append(dueTasks.get(i).toString()).append("\n");
             }
@@ -598,7 +594,7 @@ public class Mickey {
             return response.toString().trim();
         } catch (DateTimeParseException e) {
             lastCommandType = "error";
-            return "Oops! Use this date format: DD-MM-YYYY";
+            return "Gosh! Use this date format: DD-MM-YYYY";
         }
     }
 
@@ -607,13 +603,13 @@ public class Mickey {
 
         if (input.length() <= 8) {
             lastCommandType = "error";
-            return "Hey, your deadline needs a description!";
+            return "Gosh, your deadline needs a description!";
         } else if (byIndex == -1) {
             lastCommandType = "error";
-            return "You forgot the /by date! Try: deadline <task> /by <date>";
+            return "Gosh, you forgot the /by date! Try: deadline <task> /by <date>";
         } else if (byIndex <= 10) {
             lastCommandType = "error";
-            return "Umm, the description can't be empty!";
+            return "Gosh, the description can't be empty!";
         }
 
         try {
@@ -625,11 +621,11 @@ public class Mickey {
             taskCount++;
             saveTask();
             lastCommandType = "deadline";
-            return "Deadline added!\n  " + newDeadline.toString()
+            return "Alrighty! Deadline added!\n  " + newDeadline.toString()
                     + "\n\nYou've got " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " now.";
         } catch (DateTimeParseException e) {
             lastCommandType = "error";
-            return "Hmm, that date format looks wrong! Use DD-MM-YYYY";
+            return "Hmm gosh, that date format looks wrong! Use DD-MM-YYYY";
         }
     }
 
@@ -639,10 +635,10 @@ public class Mickey {
 
         if (input.length() <= 5) {
             lastCommandType = "error";
-            return "Hey, your event needs a description!";
+            return "Gosh, your event needs a description pal!";
         } else if (fromIndex == -1 || toIndex == -1) {
             lastCommandType = "error";
-            return "You're missing /from or /to! Try: event <task> /from <date-time> /to <date-time>";
+            return "Gosh, you're missing /from or /to! Try: event <task> /from <date-time> /to <date-time>";
         }
 
         try {
@@ -655,11 +651,11 @@ public class Mickey {
             taskCount++;
             saveTask();
             lastCommandType = "event";
-            return "Event scheduled! \n  " + newEvent.toString()
+            return "Alrighty! I have added an event! \n  " + newEvent.toString()
                     + "\n\nThat's " + taskCount + " task" + (taskCount == 1 ? "" : "s") + " on your plate!";
         } catch (DateTimeParseException e) {
             lastCommandType = "error";
-            return "Oops! Wrong date-time format! Use DD-MM-YYYY HH:MM";
+            return "Gosh! Wrong date time format pal! Use DD-MM-YYYY HH:MM";
         }
     }
 
