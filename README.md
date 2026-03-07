@@ -1,37 +1,201 @@
-# Mickey project template
+# Mickey User Guide
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Mickey_. Given below are instructions on how to use it.
+Mickey is a task management chatbot that helps you keep track of your todos, deadlines, and events. It's got a GUI that makes you want to track all your tasks here.
 
-## Setting up in IntelliJ
+## Quick start
 
-Prerequisites: JDK 21.
+1. Make sure you have Java 21 installed.
 
-1. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into IntelliJ as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 21** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Mickey.java` file, right-click it, and choose `Run Mickey.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   
+2. Download the latest `.jar` file from releases.
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+3. Double-click it or run `java -jar mickey.jar` in your terminal.
 
-## Running Tests
+4. A window should pop up. Type commands in the text box at the bottom and hit Enter.
 
-The project comes with a set of test scripts for different operating systems:
+5. Try these to get started:
+   - `list` - see what's on your plate
+   - `todo finish assignment` - add a quick task
+   - `deadline project report /by 31-12-2026` - add something with a due date
+   - `mark 1` - check off the first task
+   - `bye` - close the app
 
-- **MacOS/Linux**: Run the shell script
-  ```bash
-  cd text-ui-test
-  ./runtest.sh
-  ```
 
-- **Windows**: Run the batch script
-  ```batch
-  cd text-ui-test
-  runtest.bat
-  ```
 
-These scripts will compile the source files, run the tests, and compare the output against the expected output.
+## Features
+
+**Quick notes:**
+- Commands aren't case-sensitive (`LIST` = `list`)
+- Extra spaces are fine (`todo    buy    milk` works)
+- Dates use `DD-MM-YYYY` format
+- Times use 24-hour format like `1400` for 2pm
+
+
+
+### `list` - See all your tasks
+
+Shows everything you've added.
+
+**Example:** `list`
+
+
+
+### `todo` - Add a basic task
+
+For stuff without a specific deadline.
+
+**Format:** `todo DESCRIPTION`
+
+**Examples:**
+- `todo buy groceries`
+- `todo call mom`
+- `todo gym`
+
+
+
+### `deadline` - Add a task with a due date
+
+For assignments, bills, anything with a deadline.
+
+**Format:** `deadline DESCRIPTION /by DD-MM-YYYY`
+
+**Examples:**
+- `deadline CS2103 iP /by 02-02-2026`
+- `deadline pay rent /by 01-03-2026`
+
+
+
+### `event` - Add an event with time
+
+For meetings, classes, hangouts - anything with a start and end time.
+
+**Format:** `event DESCRIPTION /from DD-MM-YYYY HHmm /to DD-MM-YYYY HHmm`
+
+**Examples:**
+- `event CS2103 lecture /from 17-02-2026 1400 /to 17-02-2026 1600`
+- `event dinner with friends /from 20-02-2026 1900 /to 20-02-2026 2100`
+
+
+
+### `mark` - Check off a task
+
+Mark something as done when you finish it.
+
+**Format:** `mark INDEX`
+
+**Example:** `mark 1` (marks the first task)
+
+
+
+### `unmark` - Undo a checkmark
+
+Accidentally marked something? Unmark it.
+
+**Format:** `unmark INDEX`
+
+**Example:** `unmark 2`
+
+
+
+### `delete` - Remove a task
+
+Get rid of tasks you don't need anymore.
+
+**Format:** `delete INDEX`
+
+**Example:** `delete 3`
+
+
+
+### `find` - Search your tasks
+
+Find tasks by keyword.
+
+**Format:** `find KEYWORD`
+
+**Examples:**
+- `find assignment` - shows all tasks with "assignment"
+- `find meeting` - shows all tasks with "meeting"
+
+
+
+### `due` - What's due on a specific day?
+
+Check what you have on a particular date.
+
+**Format:** `due DD-MM-YYYY`
+
+**Example:** `due 15-02-2026`
+
+
+
+### `remind` - What's coming up?
+
+Shows everything due in the next 7 days. Good for weekly planning.
+
+**Format:** `remind`
+
+
+
+### `clear` - Delete completed tasks
+
+Cleans up your list by removing everything you've already marked as done.
+
+**Format:** `clear`
+
+
+
+### `clear all` - Nuclear option
+
+Deletes EVERYTHING. Use with caution.
+
+**Format:** `clear all`
+
+
+
+### `cheer` - Need motivation?
+
+Gets you a random motivational quote when you're feeling down.
+
+**Format:** `cheer`
+
+
+
+### `bye` - Exit
+
+Close the app.
+
+**Format:** `bye`
+
+
+
+## Other stuff
+
+[!TIP]
+**Auto-save:** Everything saves automatically. No save button needed.
+
+[!TIP]
+**Data file:** Your tasks are stored in `data/mickey.txt`. 
+
+[!TIP]
+**Dark mode:** The app switches to dark theme after 6pm automatically.
+
+
+## Command Cheat Sheet
+
+[!IMPORTANT]
+| Command | What it does | Example |
+|---------|-------------|---------|
+| `list` | Show all tasks | `list` |
+| `todo` | Add basic task | `todo study for midterm` |
+| `deadline` | Add task with due date | `deadline essay /by 28-02-2026` |
+| `event` | Add event with time | `event tutorial /from 19-02-2026 1000 /to 19-02-2026 1100` |
+| `mark` | Check off task | `mark 1` |
+| `unmark` | Undo checkmark | `unmark 2` |
+| `delete` | Remove task | `delete 3` |
+| `find` | Search tasks | `find project` |
+| `due` | Tasks on specific date | `due 15-02-2026` |
+| `remind` | Next 7 days | `remind` |
+| `clear` | Delete completed | `clear` |
+| `clear all` | Delete everything | `clear all` |
+| `cheer` | Get motivated | `cheer` |
+| `bye` | Exit | `bye` |
