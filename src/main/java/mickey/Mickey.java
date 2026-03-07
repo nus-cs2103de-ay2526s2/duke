@@ -97,6 +97,8 @@ public class Mickey {
                 handleFindCommand(userInput);
             } else if (command.equals("remind")) {
                 handleRemindCommand(userInput);
+            } else if (command.equals("clear")) {
+                handleClearCommand();
             } else {
                 handleEchoCommand(userInput);
             }
@@ -314,6 +316,56 @@ public class Mickey {
     }
 
     /**
+     * Handles clear command to delete all tasks
+     */
+    private void handleClearCommand() {
+        ArrayList<Task> allTasks = tasks.getAllTasks();
+        int clearedNumber = 0;
+        for (int i = allTasks.size() - 1; i >= 0; i--) {
+            if (allTasks.get(i).isComplete()) {
+                tasks.deleteTask(i);
+                clearedNumber++;
+            }
+        }
+        taskCount = tasks.size();
+        saveTask();
+        if (clearedNumber == 0) {
+            System.out.println("Gosh, you don't have any tasks to clear!");
+        } else {
+            System.out.println("Cleared " + clearedNumber + " completed task"
+                + (clearedNumber == 1 ? "" : "s") + "!");
+            System.out.println("You have " + taskCount + " task"
+                    + (taskCount == 1 ? "" : "s") + " left pal.");
+        }
+    }
+
+    /**
+     * Handle the clear response
+     */
+    private String getClearResponse() {
+        ArrayList<Task> allTasks = tasks.getAllTasks();
+        int clearedNumber = 0;
+        for (int i = allTasks.size() - 1; i >= 0; i--) {
+            if (allTasks.get(i).isComplete()) {
+                tasks.deleteTask(i);
+                clearedNumber++;
+            }
+        }
+        taskCount = tasks.size();
+        saveTask();
+        lastCommandType = "clear";
+        if (clearedNumber == 0) {
+            return "Gosh, you don't have any tasks to clear pal!";
+        }
+
+        return "Cleared " + clearedNumber + " completed task"
+                + (clearedNumber == 1 ? "" : "s") + "!\n\n"
+                + "You have " + taskCount + " task"
+                + (taskCount == 1 ? "" : "s") + " left pal.";
+    }
+
+
+    /**
      * Checks if a task is due on a specific date
      *
      * @param task the task
@@ -398,6 +450,8 @@ public class Mickey {
                 return getFindResponse(input);
             } else if (command.equals("remind")) {
                 return getRemindResponse();
+            } else if (command.equals("clear")) {
+                return getClearResponse();
             } else {
                 return getEchoResponse(input);
             }
