@@ -15,3 +15,16 @@ bin/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Log files
+*.log
+
+#Compiled Class Files
+*.class
+
+#Data Files
+tasks/
+data/
+
+#Jar Files
+*.jar
