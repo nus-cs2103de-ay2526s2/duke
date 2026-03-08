@@ -1,0 +1,41 @@
+list
+task 1
+help
+list
+mark 1
+mark abc
+mark
+unmark 1
+todo
+todo todo task 1
+list
+mark 1
+list
+delete
+delete a
+delete 3
+delete 1
+list
+todo todo task 2
+deadline
+deadline/by 14th March
+deadline /by 14th March
+deadline test
+deadline assignment1 /by 14th March
+deadline assignment1 /by 2026-03-14
+list
+event
+event /start 1000
+event test /start 1000
+event test /end 1000 /start 1100
+event event task 1 /start 10th Feb /end 11th Feb
+event event task 1 /start 2026-03-14 /end 2026-05-18
+list
+mark 3
+list
+mark 2
+list
+unmark 1
+todo todo task 3
+list
+bye
