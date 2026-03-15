@@ -25,7 +25,7 @@ Even after closing the GUI, DuckTask remembers your tasks and reloads it upon re
 
 ## Quick Start
 1. Ensure you have Java `21` installed on your computer. 
-2. Download the JAR File [here](https://github.com/cheranlee/ip/releases/tag/A-Release)
+2. Download the JAR File [here](https://github.com/cheranlee/ip/releases/tag/A-LatestRelease)
 3. Move the JAR File to an empty folder. 
 4. Run the JAR File by double-clicking on the `DuckTask.jar` file.
    Alternatively, in your command terminal, after navigating into the folder you put the JAR file in, run `java -jar "DuckTask.jar"`.
