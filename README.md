@@ -4,7 +4,7 @@ Welcome to DuckTask, a simple and intuitive way to store your tasks.
 
 ## Running the JAR File 
 
-1. Download the JAR File [here](https://github.com/cheranlee/ip/releases/tag/A-Release)
+1. Download the JAR File [here](https://github.com/cheranlee/ip/releases/tag/A-LatestRelease)
 2. Move the JAR File to an empty folder. 
 3. Run the JAR File by double-clicking on the `DuckTask.jar` file. 
 Alternatively, after navigating into the folder in your terminal, run `java -jar "DuckTask.jar"`.
