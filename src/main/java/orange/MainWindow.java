@@ -1,5 +1,6 @@
 package orange;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -34,9 +35,6 @@ public class MainWindow extends AnchorPane {
 
     @FXML
     public void initialize() {
-        // Bind scroll to always show latest messages
-        //scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-
         // Show welcome message with orange theme
         String welcomeMessage = "🍊 Hello! I'm Orange!\n\n" +
                 "Your friendly task manager is ready to help.\n" +
@@ -79,6 +77,16 @@ public class MainWindow extends AnchorPane {
 
         userInput.clear();
         scrollPane.setVvalue(1.0);
+
+        // Check if should exit and close window after a short delay
+        if (orange.shouldExit()) {
+            // Use a Timeline to delay the exit so user can see the goodbye message
+            javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(
+                    javafx.util.Duration.seconds(1.5)
+            );
+            delay.setOnFinished(event -> Platform.exit());
+            delay.play();
+        }
     }
 
     /**
