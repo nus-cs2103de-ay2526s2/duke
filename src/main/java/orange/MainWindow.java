@@ -35,7 +35,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         // Bind scroll to always show latest messages
-        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        //scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
 
         // Show welcome message with orange theme
         String welcomeMessage = "🍊 Hello! I'm Orange!\n\n" +
